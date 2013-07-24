@@ -6,8 +6,10 @@ clean:
 	rm -r dist || true
 	rm -r build || true
 	rm -r *.egg-info || true
-	rm -r store || true
 	rm tiddlyweb.log || true
+
+clean-store:
+	rm -r store || true
 
 test:
 	py.test -x test

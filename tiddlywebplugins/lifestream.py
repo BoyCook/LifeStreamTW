@@ -1,9 +1,8 @@
 from tiddlywebplugins.utils import do_html
 from tiddlywebplugins.utils import replace_handler
 from tiddlyweb.model.bag import Bag
-from twython import Twython
+from Loader import Loader
 from jinja2 import Environment, FileSystemLoader
-from tiddlywebplugins import config
 
 template_env = Environment(loader=FileSystemLoader('templates'))
 
@@ -33,16 +32,7 @@ def get_bag_contents(store, bag_name):
 
 
 def load(environ, start_response):
-    load_tweets()
+    loader = Loader()
+    loader.load_tweets()
     return '<h1>Done</h1>'
-
-
-def load_tweets():
-    # https://github.com/ryanmcgrath/twython
-    print 'Loading tweets...'
-    twitter = Twython(config['app_key'], config['app_secret'], config['oauth_token'], config['oauth_token_secret'])
-    tweets = twitter.get_user_timeline()
-    for tweet in tweets:
-        print tweet['text']
-
 
