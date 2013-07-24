@@ -1,0 +1,120 @@
+body {
+    font-family: 'proxima-nova',sans-serif
+
+/*   
+    font-family: Merriweather, Garamond, Georgia, serif
+    font-family: 'freight-sans-pro',sans-serif
+    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif
+    font-family: 'Lato', Arial, Verdana, sans-serif
+*/
+}   
+
+nav {
+    overflow: auto;
+}
+
+nav h1, .welcome-image {
+    padding-left: 45px;
+}
+
+.content {
+    padding: 0px;
+    border-left: solid 1px #e3e3e3;
+}
+
+.welcome, .event-item {
+    padding: 30px;
+}
+
+/* Navigation */
+.navigation {
+/*	margin-left:auto;
+	margin-right:auto;	*/
+}
+
+.navigation ul {
+    border:0;
+    outline:0;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+.hide {
+    display:none;
+}
+
+.show {
+    display:block;
+}
+
+.navigation li a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 25px;
+    border: 4px solid #f8f8f8;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    z-index: 5;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #999;
+    font-weight: 600;
+    background-color: #fff;
+}
+
+.navigation li a:hover, .navigation li a:focus, .navigation li a:active { 
+    background-color: lightblue;
+    /*background-color: #FF0000;*/
+}
+
+.event-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.event-item p {
+    padding: 0px;
+}
+
+.event-item:nth-child(even) {
+    border-top: solid 1px #e3e3e3;    
+    border-bottom: solid 1px #e3e3e3;    
+}
+
+.time-ago {
+    display: inline;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.simple-a {
+    text-decoration: none;
+    color: #0088cc;
+}
+
+.simple-a:hover {
+    text-decoration: underline;
+}
+
+.event-item-content {
+    /*min-height: 100px;*/
+    line-height: 20px;
+    /*max-height: 100px;*/
+    overflow: hidden;
+    position: relative;
+    /*white-space: nowrap;*/
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+i {
+    color: #0088cc;
+}
+
+.twitter {
+    /*background: -webkit-gradient(linear, left top, right top, from(#00abeb), color-stop(0.4, #fff));    */
+}
+
