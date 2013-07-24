@@ -7,5 +7,5 @@ config = {
     'twanager_plugins': ['tiddlywebwiki'],
 	'static_url_dir': 'static',
 	'static_file_dir': './static',    
-    'log_level': 'DEBUG',    
+    'log_level': 'DEBUG',
 }
