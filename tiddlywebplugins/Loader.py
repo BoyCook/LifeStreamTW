@@ -1,10 +1,9 @@
-from config import config
 from twython import Twython
-from tiddlyweb.model.bag import Bag
 from tiddlyweb.model.tiddler import Tiddler
+from config import config
+
 
 class Loader():
-
     def __init__(self, store):
         self.store = store
 
@@ -14,15 +13,14 @@ class Loader():
         twitter = Twython(config['app_key'], config['app_secret'], config['oauth_token'], config['oauth_token_secret'])
         tweets = twitter.get_user_timeline()
         for tweet in tweets:
-            print tweet['user']['screen_name'] + ' - ' + tweet['id_str'] + ' - ' + tweet['created_at'] + ' - ' + tweet['text'] + ' - ' + tweet['text']
+            self.add_tiddler(tweet)
         return tweets
 
-
-    def build_tiddler(self, title, text):
-        tiddler = Tiddler(title, 'tweets')
-        tiddler.text = text
-
+    def add_tiddler(self, tweet):
+        id_str = tweet['id_str']
+        tiddler = Tiddler('Tweet' + id_str, 'tweets')
+        tiddler.text = tweet['text']
+        tiddler.fields['created_at'] = tweet['created_at']
+        tiddler.fields['user_name'] = tweet['user']['screen_name']
         tiddler.modifier = 'LifeStreamDataLoader'
-
-    def add_tiddler(self, tiddler):
         self.store.put(tiddler)
