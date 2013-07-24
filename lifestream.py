@@ -22,7 +22,6 @@ def init(config):
     selector = config['selector']
     replace_handler(selector, '/', GET=home_page)
 
-
 def get_bag_contents(store, bag_name):
     bag = Bag(bag_name)
     bag = store.get(bag)
