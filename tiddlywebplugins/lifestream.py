@@ -1,12 +1,9 @@
 from tiddlywebplugins.utils import do_html
 from tiddlywebplugins.utils import replace_handler
 from tiddlyweb.model.bag import Bag
-from tiddlyweb.model.tiddler import Tiddler
-from tiddlyweb.model.recipe import Recipe
-from tiddlyweb.store import Store
-from config import config
 from twython import Twython
 from jinja2 import Environment, FileSystemLoader
+from tiddlywebplugins import config
 
 template_env = Environment(loader=FileSystemLoader('templates'))
 
