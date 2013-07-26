@@ -195,8 +195,8 @@
             <section class="event-item">
                 <section class="event-item-head">
                     <i class="icon-wordpress"></i>
-                    <a href="http://boycook.wordpress.com" target="_blank" title="Read post" class="simple-a">{{ blog.fields.post_title }}</a>
-                    <p class="time-ago">{{ blog.fields.date }}</p>
+                    <a href="{{ blog.fields.post_url }}" target="_blank" title="Read post" class="simple-a">{{ blog.fields.post_title }}</a>
+                    <p class="time-ago">{{ blog.fields.created_at }}</p>
                 </section>
                 <article class="event-item-content">
                     {{ blog.text }}
@@ -212,7 +212,7 @@
                     <p class="time-ago">1 hour 20 minutes ago</p>                                                 
                 </section>                                            
                 <article class="event-item-content">
-                    This is some LinkedIn update
+                    Sample LinkedIn update
                 </article>
             </section>                
         </section>
@@ -224,7 +224,7 @@
                     <p class="time-ago">5 hours 7 minutes ago</p>                                                   
                 </section>                                            
                 <article class="event-item-content">
-                    This is some GitHub commit message
+                    Sample GitHub commit message
                 </article>
             </section>                                                                                              
         </section>
@@ -236,7 +236,7 @@
                     <p class="time-ago">1 day ago</p>                                                             
                 </section>                                                                
                 <article class="event-item-content">
-                    Jenkins build plan name
+                    Sample Jenkins build plan
                 </article>
             </section>                
         </section>
@@ -248,7 +248,7 @@
                     <p class="time-ago">1 day 2 hours ago</p>                                                              
                 </section>                                                                                    
                 <article class="event-item-content">
-                    This is some Picture post
+                    Sample Picture post
                 </article>
             </section>                
         </section>
