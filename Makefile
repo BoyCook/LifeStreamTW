@@ -11,6 +11,10 @@ clean:
 clean-store:
 	rm -r store || true
 
+clean-data:
+	rm -r store/bags/blogs/tiddlers/* || true
+	rm -r store/bags/tweets/tiddlers/* || true
+
 test:
 	py.test -x test
 
