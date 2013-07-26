@@ -43,138 +43,18 @@
                     <p>Hello, I'm Craig Cook. I currently work for <a href="http://osmosoft.com" target="_blank" class="simple-a">Osmosoft.com</a> as a web technologies advocate. I’ve been a full-time professional software engineer in the since 2003. Like many others I’ve been playing with code and computers from a young age. I've got experience in a range of technologies but I mainly focus on web technologies at the moment. Have a look around to see what I've been up to recently, click on the links to read more:</p>                    
                 </article>                    
             </section>
+            {% for item in feed %}
             <section class="event-item">
                 <section class="event-item-head">
-                    <i class="icon-wordpress"></i>  
-                    <a href="http://boycook.wordpress.com" target="_blank" title="Read post" class="simple-a">new blog post</a>                   
-                    <p class="time-ago">1 minutes ago</p>                         
-                </section>                        
+                    <i class="icon-twitter"></i>
+                    <a href="{{ item.fields.item_url }}" target="_blank" title="View tweet" class="simple-a">@BoyCook</a>
+                    <p class="time-ago">{{ item.fields.created_at }}</p>
+                </section>
                 <article class="event-item-content">
-                This is a short blog post
-                </article>
-            </section>               
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-twitter"></i> 
-                    <a href="http://twitter.com/BoyCook" target="_blank" title="View tweet" class="simple-a">new tweet</a>                       
-                    <p class="time-ago">12 minutes ago</p> 
-                </section>                        
-                <article class="event-item-content">
-                    Hey people - this is just some randon tweet
+                    {{ item.fields.item_summary }}
                 </article>
             </section>
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-twitter"></i> 
-                    <a href="http://twitter.com/BoyCook" target="_blank" title="View tweet" class="simple-a">new tweet</a>                       
-                    <p class="time-ago">37 minutes ago</p> 
-                </section>                        
-                <article class="event-item-content">
-                    Hey people - this is just some randon tweet
-                </article>
-            </section>                        
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-github"></i> 
-                    <a href="http://github.com/BoyCook" target="_blank" title="View commit" class="simple-a">new commit</a>
-                    <p class="time-ago">44 minutes ago</p>                                                
-                </section>                                            
-                <article class="event-item-content">
-                    This is some GitHub commit message
-                </article>
-            </section>                                
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-github"></i> 
-                    <a href="http://github.com/BoyCook" target="_blank" title="View issue" class="simple-a">new issue created</a>
-                    <p class="time-ago">47 minutes ago</p>                                                   
-                </section>                                            
-                <article class="event-item-content">
-                    This is some GitHub issue
-                </article>
-            </section>                              
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-wordpress"></i>  
-                    <a href="http://boycook.wordpress.com" target="_blank" title="Read post" class="simple-a">new blog post</a>                   
-                    <p class="time-ago">53 minutes ago</p>                         
-                </section>                        
-                <article class="event-item-content blog-post">
-                    This is a really long blog post - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed porta erat, id tempus neque. Vestibulum imperdiet neque eget dictum auctor. Nullam felis neque, convallis in sagittis in, sollicitudin et diam. Sed turpis felis, adipiscing quis tempus in, sodales non nibh. Vestibulum sit amet ornare lectus. Cras mauris sem, placerat eleifend elementum sed, pharetra vitae turpis. Vivamus et enim auctor, tempus sem vel, dapibus lectus. Sed sit amet tellus non neque rhoncus dictum et a sem. In arcu sem, tristique at condimentum nec, semper mollis mauris. Sed at magna et justo adipiscing varius. Nulla facilisi. Vivamus vel velit sit amet augue vestibulum rutrum quis nec lectus.
-
-                    Pellentesque pharetra et risus rhoncus tempor. Aliquam aliquam diam sit amet nibh molestie, pulvinar imperdiet lacus hendrerit. Duis non sem cursus, laoreet diam eu, aliquet leo. Aenean tincidunt et leo vel porta. In sed vulputate purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse sed nibh at augue pretium fermentum. Ut a hendrerit orci, non commodo sapien. Curabitur blandit nulla id consectetur ullamcorper.
-                </article>
-            </section>                                
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-linkedin"></i> 
-                    <a href="http://www.linkedin.com/in/BoyCook" target="_blank" title="Read details" class="simple-a">new work details</a>
-                    <p class="time-ago">1 hour 20 minutes ago</p>                                                 
-                </section>                                            
-                <article class="event-item-content">
-                    This is some LinkedIn update
-                </article>
-            </section>                
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-github"></i>
-                    <a href="http://github.com/BoyCook" target="_blank" title="View repository" class="simple-a">new repository created</a>
-                    <p class="time-ago">3 hours 40 minutes ago</p>                           
-                </section>     
-                <article class="event-item-content">                                       
-                    This is some GitHub repository name
-                </article>                        
-            </section>                
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-github"></i> 
-                    <a href="http://github.com/BoyCook" target="_blank" title="View commit" class="simple-a">new commit</a>
-                    <p class="time-ago">3 hours 55 minutes ago</p>                                                
-                </section>                                            
-                <article class="event-item-content">
-                    This is some GitHub commit message
-                </article>
-            </section>                                
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-github"></i> 
-                    <a href="http://github.com/BoyCook" target="_blank" title="View issue" class="simple-a">new issue created</a>
-                    <p class="time-ago">4 hours 7 minutes ago</p>                                                   
-                </section>                                            
-                <article class="event-item-content">
-                    This is some GitHub issue
-                </article>
-            </section>                  
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-github"></i> 
-                    <a href="http://github.com/BoyCook" target="_blank" title="View commit" class="simple-a">new commit</a>
-                    <p class="time-ago">5 hours 7 minutes ago</p>                                                   
-                </section>                                            
-                <article class="event-item-content">
-                    This is some GitHub commit message
-                </article>
-            </section>                                                                                              
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-cog"></i> 
-                    <a href="http://craigcook.com/build" target="_blank" title="View build plan" class="simple-a">build failed</a>
-                    <p class="time-ago">1 day ago</p>                                                             
-                </section>                                                                
-                <article class="event-item-content">
-                    Jenkins build plan name
-                </article>
-            </section>                
-            <section class="event-item">
-                <section class="event-item-head">
-                    <i class="icon-flickr"></i> 
-                    <a href="http://www.flickr.com/BoyCook" target="_blank" title="View picture" class="simple-a">new picture added</a>
-                    <p class="time-ago">1 day 2 hours ago</p>                                                              
-                </section>                                                                                    
-                <article class="event-item-content">
-                    This is some Picture post
-                </article>
-            </section>                
+            {% endfor %}
         </section>
         <section id="twitter" class="module">
             {% for tweet in tweets %}
@@ -195,7 +75,7 @@
             <section class="event-item">
                 <section class="event-item-head">
                     <i class="icon-wordpress"></i>
-                    <a href="{{ blog.fields.post_url }}" target="_blank" title="Read post" class="simple-a">{{ blog.fields.post_title }}</a>
+                    <a href="{{ blog.fields.item_url }}" target="_blank" title="Read post" class="simple-a">{{ blog.fields.post_title }}</a>
                     <p class="time-ago">{{ blog.fields.created_at }}</p>
                 </section>
                 <article class="event-item-content">

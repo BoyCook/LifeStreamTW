@@ -34,6 +34,8 @@ class Loader():
         tiddler.fields['sort_field'] = tweet['created_at']
         tiddler.fields['created_at'] = tweet['created_at']
         tiddler.fields['user_name'] = tweet['user']['screen_name']
+        tiddler.fields['item_summary'] = tweet['text']
+        tiddler.fields['item_url'] = 'http://twitter.com/BoyCook/status/' + id_str
         tiddler.modifier = 'LifeStreamDataLoader'
         self.store.put(tiddler)
 
@@ -44,8 +46,8 @@ class Loader():
         tiddler.fields['sort_field'] = post['modified']
         tiddler.fields['created_at'] = post['date']
         tiddler.fields['modified'] = post['modified']
-        tiddler.fields['excerpt'] = post['excerpt']
+        tiddler.fields['item_summary'] = post['excerpt']
         tiddler.fields['post_title'] = post['title']
-        tiddler.fields['post_url'] = post['URL']
+        tiddler.fields['item_url'] = post['URL']
         tiddler.modifier = 'LifeStreamDataLoader'
         self.store.put(tiddler)
