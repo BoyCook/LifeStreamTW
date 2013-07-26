@@ -36,6 +36,27 @@
             <img src="static/images/craig.jpg"/>
         </section>                
     </nav>
+    {% macro get_css_class(tag) -%}
+        {% if tag=='tweet' %}
+            icon-twitter
+        {% elif tag=='blogPost' %}
+            icon-wordpress
+        {% elif tag=='github' %}
+            icon-github
+        {% elif tag=='jenkins' %}
+            icon-cog
+        {% elif tag=='linkedin' %}
+            icon-linkedin
+        {% endif %}
+    {%- endmacro %}
+    
+    {% macro get_anchor_text(tag) -%}
+        {% if tag=='tweet' %}
+            @BoyCook
+        {% elif tag=='blogPost' %}
+            new blog post
+        {% endif %}
+    {%- endmacro %}
     <section class="content" >
         <section id="home" class="module"> 
             <section class="event-item">
@@ -46,8 +67,8 @@
             {% for item in feed %}
             <section class="event-item">
                 <section class="event-item-head">
-                    <i class="icon-twitter"></i>
-                    <a href="{{ item.fields.item_url }}" target="_blank" title="View tweet" class="simple-a">@BoyCook</a>
+                    <i class="{{ get_css_class(item.tags[0]) }}"></i>
+                    <a href="{{ item.fields.item_url }}" target="_blank" title="View tweet" class="simple-a">{{ get_anchor_text(item.tags[0]) }}</a>
                     <p class="time-ago">{{ item.fields.created_at }}</p>
                 </section>
                 <article class="event-item-content">

@@ -31,6 +31,7 @@ class Loader():
         id_str = tweet['id_str']
         tiddler = Tiddler('Tweet' + id_str, 'tweets')
         tiddler.text = tweet['text']
+        tiddler.tags = ['tweet']
         tiddler.fields['sort_field'] = tweet['created_at']
         tiddler.fields['created_at'] = tweet['created_at']
         tiddler.fields['user_name'] = tweet['user']['screen_name']
@@ -43,6 +44,7 @@ class Loader():
         id = str(post['ID'])
         tiddler = Tiddler('Blog' + id, 'blogs')
         tiddler.text = post['content']
+        tiddler.tags = ['blogPost']
         tiddler.fields['sort_field'] = post['modified']
         tiddler.fields['created_at'] = post['date']
         tiddler.fields['modified'] = post['modified']
