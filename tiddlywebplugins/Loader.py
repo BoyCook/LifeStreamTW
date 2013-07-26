@@ -2,6 +2,7 @@ from tiddlyweb.model.tiddler import Tiddler
 from config import config
 from twython import Twython
 from wordpress.wordpress import WordPress
+from github import Github
 
 
 class Loader():
@@ -9,23 +10,32 @@ class Loader():
         self.store = store
         self.twitter = Twython(config['app_key'], config['app_secret'], config['oauth_token'], config['oauth_token_secret'])
         self.wp = WordPress('boycook.wordpress.com')
+        self.gitHub = Github()
 
     def load(self):
-        self.load_tweets()
-        self.load_blog_posts()
+        # self.load_tweets()
+        # self.load_blog_posts()
+        self.load_github()
 
     def load_tweets(self):
-        print 'Loading tweets...'
         tweets = self.twitter.get_user_timeline()
         for tweet in tweets:
             self.add_tweet_tiddler(tweet)
         return tweets
 
     def load_blog_posts(self):
-        print 'Loading blog posts...'
         posts = self.wp.get_posts()
         for post in posts:
             self.add_blog_post_tiddler(post)
+
+    def load_github(self):
+        user = self.gitHub.get_user('BoyCook')
+        repos = user.get_repos()
+        gists = user.get_gists()
+        for repo in repos:
+            self.add_github_repo_tiddler(repo)
+        for gist in gists:
+            self.add_github_gist_tiddler(gist)
 
     def add_tweet_tiddler(self, tweet):
         id_str = tweet['id_str']
@@ -51,5 +61,29 @@ class Loader():
         tiddler.fields['item_summary'] = post['excerpt']
         tiddler.fields['post_title'] = post['title']
         tiddler.fields['item_url'] = post['URL']
+        tiddler.modifier = 'LifeStreamDataLoader'
+        self.store.put(tiddler)
+
+    def add_github_repo_tiddler(self, repo):
+        tiddler = Tiddler('GitHubRepo' + str(repo.id), 'github')
+        tiddler.text = repo.name
+        tiddler.tags = ['gitHubRepo']
+        tiddler.fields['sort_field'] = repo.pushed_at
+        tiddler.fields['created_at'] = repo.created_at
+        tiddler.fields['updated_at'] = repo.updated_at
+        tiddler.fields['item_summary'] = repo.description
+        tiddler.fields['item_url'] = repo.html_url
+        tiddler.modifier = 'LifeStreamDataLoader'
+        self.store.put(tiddler)
+
+    def add_github_gist_tiddler(self, repo):
+        tiddler = Tiddler('GitHubGist' + str(repo.id), 'github')
+        tiddler.text = repo.description
+        tiddler.tags = ['gitHubGist']
+        tiddler.fields['sort_field'] = repo.updated_at
+        tiddler.fields['created_at'] = repo.created_at
+        tiddler.fields['updated_at'] = repo.updated_at
+        tiddler.fields['item_summary'] = repo.description
+        tiddler.fields['item_url'] = repo.html_url
         tiddler.modifier = 'LifeStreamDataLoader'
         self.store.put(tiddler)
