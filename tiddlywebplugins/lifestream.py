@@ -34,6 +34,7 @@ def get_bag_contents(store, bag_name):
 def load(environ, start_response):
     store = environ['tiddlyweb.store']
     loader = Loader(store)
-    loader.load_tweets()
-    return '<h1>Done</h1>'
+    loader.load()
+    start_response('200', [('Content-Type', 'text/html; charset=UTF-8')])
+    return ['<html><body><h1>Done</h1></body></html>']
 
