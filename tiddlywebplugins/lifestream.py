@@ -46,7 +46,10 @@ def get_recipe_contents(recipe_name, store, env):
 def get_bag_contents(bag_name, store):
     bag = Bag(bag_name)
     bag = store.get(bag)
-    return populate_tiddlers(store.list_bag_tiddlers(bag), store)
+    tiddlers = populate_tiddlers(store.list_bag_tiddlers(bag), store)
+    if tiddlers:
+        tiddlers.reverse()
+    return tiddlers
 
 
 def populate_tiddlers(tiddlers, store):
