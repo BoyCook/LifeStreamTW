@@ -9,7 +9,7 @@ TiddlyWeb version of the LifeStream app
 * `sudo pip install httplib2`
 
 ## Other libs
-* http://pythonhosted.org/APScheduler/intervalschedule.html
+* http://pythonhosted.org/APScheduler/intervalschedule.html `sudo pip install apscheduler`
 
 ## API URLs
 * https://api.github.com/users/boycook/events
