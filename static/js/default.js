@@ -14,3 +14,14 @@ function hideAll() {
 		modules[i].classList.add('hide');
 	}
 }
+
+function setDateAgo() {
+	var elements = document.getElementsByClassName('time-ago');
+	var now = new Date();
+	for (var i=0,len=elements.length; i<len; i++) {
+		var element = elements[i];
+		var original = element.innerHTML;
+		var updated = new DateAgo(now, new Date(original)).get()
+		element.innerHTML = updated;
+	}
+}
