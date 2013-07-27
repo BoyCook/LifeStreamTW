@@ -9,6 +9,7 @@ body {
 nav {
     position: fixed;
     float: left;    
+    width: 100%;
 }
 
 nav ul {
@@ -17,6 +18,10 @@ nav ul {
 
 nav li {
     display: list-item;
+}
+
+.navigation p {
+    display: inline;
 }
 
 .content {
@@ -71,5 +76,8 @@ footer {
     }
     .welcome-text {
         font-size: 12pt;
+    }    
+    .navigation p {
+        display:none;
     }    
 }
