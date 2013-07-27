@@ -12,5 +12,5 @@ class ScheduledLoad():
 
     def load(self):
         print 'Kicking off scheduled load'
-        self.sched.add_interval_job(self.loader.load, seconds=20)
+        self.sched.add_interval_job(self.loader.load, minutes=5)
 
