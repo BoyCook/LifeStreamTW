@@ -88,6 +88,8 @@ nav h1, .welcome-image {
     display: inline;
     font-style: italic;
     text-decoration: none;
+    color: gray;
+    font-size: 12px;
 }
 
 .simple-a {
