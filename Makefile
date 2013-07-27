@@ -14,6 +14,7 @@ clean-store:
 clean-data:
 	rm -r store/bags/blogs/tiddlers/* || true
 	rm -r store/bags/tweets/tiddlers/* || true
+	rm -r store/bags/github/tiddlers/* || true
 
 test:
 	py.test -x test
