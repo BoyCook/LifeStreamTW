@@ -1,4 +1,5 @@
 from tiddlyweb.model.tiddler import Tiddler
+from tiddlyweb.store import NoTiddlerError
 from config import config
 from twython import Twython
 from wordpress.wordpress import WordPress
@@ -8,7 +9,8 @@ from github import Github
 class Loader():
     def __init__(self, store):
         self.store = store
-        self.twitter = Twython(config['app_key'], config['app_secret'], config['oauth_token'], config['oauth_token_secret'])
+        self.twitter = Twython(config['app_key'], config['app_secret'], config['oauth_token'],
+                               config['oauth_token_secret'])
         self.wp = WordPress('boycook.wordpress.com')
         self.gitHub = Github()
 
@@ -50,11 +52,12 @@ class Loader():
         tiddler.fields['item_summary'] = tweet['text']
         tiddler.fields['item_url'] = 'http://twitter.com/BoyCook/status/' + id_str
         tiddler.modifier = 'LifeStreamDataLoader'
-        self.store.put(tiddler)
+        update = self.do_update(tiddler)
+        if update:
+            self.store.put(tiddler)
 
     def add_blog_post_tiddler(self, post):
-        id = str(post['ID'])
-        tiddler = Tiddler('Blog' + id, 'blogs')
+        tiddler = Tiddler('Blog' + str(post['ID']), 'blogs')
         tiddler.text = post['content']
         tiddler.tags = ['blogPost']
         tiddler.fields['sort_field'] = post['modified']
@@ -64,7 +67,9 @@ class Loader():
         tiddler.fields['post_title'] = post['title']
         tiddler.fields['item_url'] = post['URL']
         tiddler.modifier = 'LifeStreamDataLoader'
-        self.store.put(tiddler)
+        update = self.do_update(tiddler)
+        if update:
+            self.store.put(tiddler)
 
     def add_github_repo_tiddler(self, repo):
         tiddler = Tiddler('GitHubRepo' + str(repo.id), 'github')
@@ -76,7 +81,9 @@ class Loader():
         tiddler.fields['item_summary'] = repo.description
         tiddler.fields['item_url'] = repo.html_url
         tiddler.modifier = 'LifeStreamDataLoader'
-        self.store.put(tiddler)
+        update = self.do_update(tiddler)
+        if update:
+            self.store.put(tiddler)
 
     def add_github_gist_tiddler(self, repo):
         tiddler = Tiddler('GitHubGist' + str(repo.id), 'github')
@@ -88,4 +95,21 @@ class Loader():
         tiddler.fields['item_summary'] = repo.description
         tiddler.fields['item_url'] = repo.html_url
         tiddler.modifier = 'LifeStreamDataLoader'
-        self.store.put(tiddler)
+        update = self.do_update(tiddler)
+        if update:
+            self.store.put(tiddler)
+
+    def do_update(self, tiddler):
+        existing = self.get_tiddler(tiddler)
+        if existing is None:
+            return True
+        elif existing.fields['sort_field'] != tiddler.fields['sort_field']:
+            return True
+        else:
+            return False
+
+    def get_tiddler(self, tiddler):
+        try:
+            return self.store.get(tiddler)
+        except (NoTiddlerError), exc:
+            return None
