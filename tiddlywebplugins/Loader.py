@@ -13,9 +13,11 @@ class Loader():
         self.gitHub = Github()
 
     def load(self):
-        # self.load_tweets()
-        # self.load_blog_posts()
+        print 'Loading from all sources...'
+        self.load_tweets()
+        self.load_blog_posts()
         self.load_github()
+        print 'Done loading'
 
     def load_tweets(self):
         tweets = self.twitter.get_user_timeline()

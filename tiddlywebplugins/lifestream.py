@@ -1,12 +1,25 @@
 from tiddlywebplugins.utils import do_html
 from tiddlywebplugins.utils import replace_handler
-from tiddlyweb.model.recipe import Recipe
 from tiddlyweb.model.bag import Bag
+from tiddlyweb.model.recipe import Recipe
+from tiddlyweb.store import Store
+from tiddlyweb.config import config
 from tiddlyweb import control
 from Loader import Loader
+from ScheduledLoad import ScheduledLoad
 from jinja2 import Environment, FileSystemLoader
 
 template_env = Environment(loader=FileSystemLoader('templates'))
+
+
+def init(init_config):
+    print 'Life Stream init...'
+    selector = init_config['selector']
+    replace_handler(selector, '/', GET=home_page)
+    selector.add('/load', GET=load)
+    store = Store(config['server_store'][0], config['server_store'][1], environ={'tiddlyweb.config': config})
+    scheduledLoad = ScheduledLoad(store)
+    scheduledLoad.load()
 
 
 @do_html()
@@ -18,12 +31,6 @@ def home_page(environ, start_response):
     githubs = get_bag_contents('github', store)
     template = template_env.get_template('index.html')
     return template.generate(feed=feed, tweets=tweets, blogs=blogs, githubs=githubs)
-
-
-def init(config):
-    selector = config['selector']
-    replace_handler(selector, '/', GET=home_page)
-    selector.add('/load', GET=load)
 
 
 def get_recipe_contents(recipe_name, store, env):
