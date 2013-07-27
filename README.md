@@ -5,3 +5,4 @@ TiddlyWeb version of the LifeStream app
 * https://github.com/ryanmcgrath/twython
 * https://github.com/BoyCook/WordPressPYClient
 * https://github.com/jacquev6/PyGithub
+* http://jacquev6.github.io/PyGithub/introduction.html

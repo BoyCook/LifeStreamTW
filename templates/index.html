@@ -118,16 +118,20 @@
             </section>                
         </section>
         <section id="gitHub" class="module">
+            {% for item in githubs %}
             <section class="event-item">
                 <section class="event-item-head">
-                    <i class="icon-github"></i> 
-                    <a href="http://github.com/BoyCook" target="_blank" title="View commit" class="simple-a">new commit</a>
-                    <p class="time-ago">5 hours 7 minutes ago</p>                                                   
-                </section>                                            
+                    <i class="icon-github"></i>
+                    <a href="{{ item.fields.item_url }}" target="_blank" title="Open repository" class="simple-a">{{ item.text }}</a>
+                    <p class="time-ago">{{ item.fields.created_at }}</p>
+                </section>
+                {% if item.tags[0]=='gitHubRepo' %}
                 <article class="event-item-content">
-                    Sample GitHub commit message
+                    {{ item.fields.item_summary }}
                 </article>
-            </section>                                                                                              
+                {% endif %}
+            </section>
+            {% endfor %}
         </section>
         <section id="jenkins" class="module">
             <section class="event-item">

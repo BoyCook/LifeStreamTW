@@ -15,8 +15,9 @@ def home_page(environ, start_response):
     feed = get_recipe_contents('feed', store, environ)
     tweets = get_bag_contents('tweets', store)
     blogs = get_bag_contents('blogs', store)
+    githubs = get_bag_contents('github', store)
     template = template_env.get_template('index.html')
-    return template.generate(feed=feed, tweets=tweets, blogs=blogs)
+    return template.generate(feed=feed, tweets=tweets, blogs=blogs, githubs=githubs)
 
 
 def init(config):
