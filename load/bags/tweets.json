@@ -1,0 +1,11 @@
+{
+    "desc": "tweets",
+    "policy": {
+        "read": [], 
+        "write": [],
+        "create": [],
+        "delete": [],
+        "manage": [],
+        "owner": ""
+    }
+}

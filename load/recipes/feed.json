@@ -1,0 +1,16 @@
+{
+    "recipe": [
+        ["blogs", "sort:-sort_field"],
+        ["github", "sort:-sort_field"],
+        ["tweets", "sort:-sort_field"]
+    ],
+    "policy": {
+        "read": [], 
+        "write": [],
+        "create": [],
+        "delete": [],
+        "manage": [],
+        "owner": ""
+    },
+    "desc": "Sorted feed of all data"
+}

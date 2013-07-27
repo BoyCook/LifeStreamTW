@@ -1,0 +1,11 @@
+{
+    "desc": "GitHub items",
+    "policy": {
+        "read": [], 
+        "write": [],
+        "create": [],
+        "delete": [],
+        "manage": [],
+        "owner": ""
+    }
+}

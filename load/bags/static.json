@@ -1,0 +1,11 @@
+{
+    "desc": "Static Files",
+    "policy": {
+        "read": [], 
+        "write": [],
+        "create": [],
+        "delete": [],
+        "manage": [],
+        "owner": ""
+    }
+}
