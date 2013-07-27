@@ -7,6 +7,7 @@ clean:
 	rm -r build || true
 	rm -r *.egg-info || true
 	rm tiddlyweb.log || true
+	rm lifestream.log || true
 
 clean-bags:
 	rm -r store/bags/blogs/tiddlers/* || true
