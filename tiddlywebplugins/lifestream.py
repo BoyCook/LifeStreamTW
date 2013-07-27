@@ -10,13 +10,17 @@ from ScheduledLoad import ScheduledLoad
 from jinja2 import Environment, FileSystemLoader
 
 template_env = Environment(loader=FileSystemLoader('templates'))
+SUCCESS_RESPONSE = ['<html><body><h1>Done</h1></body></html>']
 
 
 def init(init_config):
     print 'Life Stream init...'
     selector = init_config['selector']
     replace_handler(selector, '/', GET=home_page)
-    selector.add('/load', GET=load)
+    selector.add('/loadall', GET=load_all)
+    selector.add('/loadtweets', GET=load_tweets)
+    selector.add('/loadblogs', GET=load_blogs)
+    selector.add('/loadgithub', GET=load_github)
     store = Store(config['server_store'][0], config['server_store'][1], environ={'tiddlyweb.config': config})
     scheduledLoad = ScheduledLoad(store)
     scheduledLoad.load()
@@ -52,10 +56,33 @@ def populate_tiddlers(tiddlers, store):
     return tiddlers
 
 
-def load(environ, start_response):
+def load_all(environ, start_response):
     store = environ['tiddlyweb.store']
     loader = Loader(store)
-    loader.load()
+    loader.load_all()
     start_response('200', [('Content-Type', 'text/html; charset=UTF-8')])
-    return ['<html><body><h1>Done</h1></body></html>']
+    return SUCCESS_RESPONSE
 
+
+def load_tweets(environ, start_response):
+    store = environ['tiddlyweb.store']
+    loader = Loader(store)
+    loader.load_tweets()
+    start_response('200', [('Content-Type', 'text/html; charset=UTF-8')])
+    return SUCCESS_RESPONSE
+
+
+def load_blogs(environ, start_response):
+    store = environ['tiddlyweb.store']
+    loader = Loader(store)
+    loader.load_blog_posts()
+    start_response('200', [('Content-Type', 'text/html; charset=UTF-8')])
+    return SUCCESS_RESPONSE
+
+
+def load_github(environ, start_response):
+    store = environ['tiddlyweb.store']
+    loader = Loader(store)
+    loader.load_github()
+    start_response('200', [('Content-Type', 'text/html; charset=UTF-8')])
+    return SUCCESS_RESPONSE

@@ -14,7 +14,7 @@ class Loader():
         self.wp = WordPress('boycook.wordpress.com')
         self.gitHub = Github()
 
-    def load(self):
+    def load_all(self):
         print 'Loading from all sources...'
         self.load_tweets()
         self.load_blog_posts()
