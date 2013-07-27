@@ -6,10 +6,12 @@ TiddlyWeb version of the LifeStream app
 * https://github.com/BoyCook/WordPressPYClient `sudo pip install git+git://github.com/BoyCook/WordPressPYClient.git`
 * https://github.com/jacquev6/PyGithub `sudo pip install PyGithub`
 * http://jacquev6.github.io/PyGithub/introduction.html
-* `sudo pip install httplib2`
+
 
 ## Other libs
 * http://pythonhosted.org/APScheduler/intervalschedule.html `sudo pip install apscheduler`
+* `sudo pip install httplib2`
+* `sudo pip install jinja2`
 
 ## API URLs
 * https://api.github.com/users/boycook/events
