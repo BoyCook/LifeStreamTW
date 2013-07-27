@@ -12,6 +12,10 @@ nav {
     width: 100%;
 }
 
+.navigation, nav h1, .welcome-image {
+    padding-left: 30px;
+}
+
 nav ul {
     list-style: none;   
 }
@@ -67,6 +71,10 @@ footer {
     .welcome-image {
         display: none;
     }
+    nav h1, .welcome-image {
+        padding-left: 30px;
+        padding-right: 30px;
+    }    
 }
 
 /* for 568px (iPhone) or less */

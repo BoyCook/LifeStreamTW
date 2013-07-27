@@ -13,10 +13,6 @@ nav {
     overflow: auto;
 }
 
-nav h1, .welcome-image {
-    padding-left: 45px;
-}
-
 .content {
     padding: 0px;
     border-left: solid 1px #e3e3e3;
@@ -28,8 +24,8 @@ nav h1, .welcome-image {
 
 /* Navigation */
 .navigation ul {
-    border:0;
-    outline:0;
+    border: 0;
+    outline: 0;
     vertical-align:baseline;
     background:transparent;
 }
