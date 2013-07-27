@@ -8,10 +8,7 @@ clean:
 	rm -r *.egg-info || true
 	rm tiddlyweb.log || true
 
-clean-store:
-	rm -r store || true
-
-clean-data:
+clean-bags:
 	rm -r store/bags/blogs/tiddlers/* || true
 	rm -r store/bags/tweets/tiddlers/* || true
 	rm -r store/bags/github/tiddlers/* || true
