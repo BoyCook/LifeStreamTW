@@ -30,14 +30,6 @@ nav {
     background:transparent;
 }
 
-.hide {
-    display:none;
-}
-
-.show {
-    display:block;
-}
-
 .navigation li a {
     position: relative;
     display: inline-block;
@@ -101,6 +93,14 @@ nav {
     /*white-space: nowrap;*/
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
+}
+
+.hide {
+    display:none;
+}
+
+.show {
+    display:block;
 }
 
 i {
