@@ -1,3 +1,4 @@
+from tiddlyweb.control import filter_tiddlers
 from tiddlywebplugins.utils import do_html
 from tiddlywebplugins.utils import replace_handler
 from tiddlyweb.model.bag import Bag
@@ -11,6 +12,7 @@ from jinja2 import Environment, FileSystemLoader
 
 template_env = Environment(loader=FileSystemLoader('templates'))
 SUCCESS_RESPONSE = ['<html><body><h1>Done</h1></body></html>']
+
 
 def init(init_config):
     print 'Life Stream init...'
@@ -31,6 +33,10 @@ def home_page(environ, start_response):
     feed = get_recipe_contents('feed', store, environ)
     tweets = get_bag_contents('tweets', store)
     blogs = get_bag_contents('blogs', store)
+
+     # filters = parse_for_filters('select=title:Blog100')
+     # _filter_tiddlers(filters, store, tiddlers)
+
     githubs = get_bag_contents('github', store)
     template = template_env.get_template('index.html')
     google_site_verification = config['google_site_verification']
@@ -40,39 +46,43 @@ def home_page(environ, start_response):
     description = config['lifestream_description']
     keywords = config['lifestream_keywords']
     site_image = config['lifestream_site_image']
-    return template.generate(welcome=welcome_file, 
-        google_site_verification=google_site_verification,
-        title=title,
-        header=header,
-        description=description,
-        keywords=keywords,
-        site_image=site_image,
-        feed=feed, 
-        tweets=tweets, 
-        blogs=blogs, 
-        githubs=githubs)
+    return template.generate(welcome=welcome_file,
+                             google_site_verification=google_site_verification,
+                             title=title,
+                             header=header,
+                             description=description,
+                             keywords=keywords,
+                             site_image=site_image,
+                             feed=feed,
+                             tweets=tweets,
+                             blogs=blogs,
+                             githubs=githubs)
 
 
 def get_recipe_contents(recipe_name, store, env):
     recipe = Recipe(recipe_name)
     recipe = store.get(recipe)
-    return populate_tiddlers(control.get_tiddlers_from_recipe(recipe, env), store)
+    tiddlers = populate_tiddlers(control.get_tiddlers_from_recipe(recipe, env), store)
+    return sort_tiddlers(tiddlers)
 
 
 def get_bag_contents(bag_name, store):
     bag = Bag(bag_name)
     bag = store.get(bag)
     tiddlers = populate_tiddlers(store.list_bag_tiddlers(bag), store)
-    if tiddlers:
-        tiddlers.reverse()
-    return tiddlers
+    return sort_tiddlers(tiddlers)
 
 
 def populate_tiddlers(tiddlers, store):
     tiddlers = list(tiddlers)
+    # TODO loop backwards so don't have to reverse later
     for i, tiddler in enumerate(tiddlers):
         tiddlers[i] = store.get(tiddler)
     return tiddlers
+
+
+def sort_tiddlers(tiddlers):
+    return filter_tiddlers(tiddlers, 'sort=-sort_field')
 
 
 def load_all(environ, start_response):

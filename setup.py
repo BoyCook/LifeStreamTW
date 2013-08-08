@@ -14,6 +14,6 @@ setup(
     packages=find_packages(exclude=['test']),
     author_email='boycook@osmosoft.com',
     platforms='Posix; MacOS X; Windows',
-    install_requires=['tiddlyweb'],
+    install_requires=['tiddlyweb', 'jinja2'],
     zip_safe=False,
 )
