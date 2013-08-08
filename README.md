@@ -7,7 +7,6 @@ TiddlyWeb version of the LifeStream app
 * https://github.com/jacquev6/PyGithub `sudo pip install PyGithub`
 * http://jacquev6.github.io/PyGithub/introduction.html
 
-
 ## Other libs
 * http://pythonhosted.org/APScheduler/intervalschedule.html `sudo pip install apscheduler`
 * `sudo pip install httplib2`

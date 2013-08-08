@@ -12,7 +12,6 @@ from jinja2 import Environment, FileSystemLoader
 template_env = Environment(loader=FileSystemLoader('templates'))
 SUCCESS_RESPONSE = ['<html><body><h1>Done</h1></body></html>']
 
-
 def init(init_config):
     print 'Life Stream init...'
     selector = init_config['selector']
@@ -34,7 +33,24 @@ def home_page(environ, start_response):
     blogs = get_bag_contents('blogs', store)
     githubs = get_bag_contents('github', store)
     template = template_env.get_template('index.html')
-    return template.generate(feed=feed, tweets=tweets, blogs=blogs, githubs=githubs)
+    google_site_verification = config['google_site_verification']
+    welcome_file = config['lifestream_welcome_file']
+    title = config['lifestream_title']
+    header = config['lifestream_header']
+    description = config['lifestream_description']
+    keywords = config['lifestream_keywords']
+    site_image = config['lifestream_site_image']
+    return template.generate(welcome=welcome_file, 
+        google_site_verification=google_site_verification,
+        title=title,
+        header=header,
+        description=description,
+        keywords=keywords,
+        site_image=site_image,
+        feed=feed, 
+        tweets=tweets, 
+        blogs=blogs, 
+        githubs=githubs)
 
 
 def get_recipe_contents(recipe_name, store, env):
