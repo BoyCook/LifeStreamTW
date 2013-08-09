@@ -4,9 +4,15 @@ from config import config
 from twython import Twython
 from wordpress.wordpress import WordPress
 from github import Github
+from datetime import datetime
 
 
 class Loader():
+    #Thu Aug 08 13:14:27 +0000 2013
+    TWITTER_FORMAT = '%a %b %d %H:%M:%S +0000 %Y'
+    #2013-08-08T10:09:59+00:00
+    WORDPRESS_FORMAT = '%Y-%m-%dT%H:%M:%S+00:00'
+
     def __init__(self, store):
         self.store = store
         self.twitter = Twython(config['app_key'], config['app_secret'], config['oauth_token'],
@@ -46,7 +52,7 @@ class Loader():
         tiddler = Tiddler('Tweet' + id_str, 'tweets')
         tiddler.text = tweet['text']
         tiddler.tags = ['tweet']
-        tiddler.fields['sort_field'] = tweet['created_at']
+        tiddler.fields['sort_field'] = self.format_date(tweet['created_at'], Loader.TWITTER_FORMAT)
         tiddler.fields['created_at'] = tweet['created_at']
         tiddler.fields['user_name'] = tweet['user']['screen_name']
         tiddler.fields['item_summary'] = tweet['text']
@@ -60,7 +66,7 @@ class Loader():
         tiddler = Tiddler('Blog' + str(post['ID']), 'blogs')
         tiddler.text = post['content']
         tiddler.tags = ['blogPost']
-        tiddler.fields['sort_field'] = post['modified']
+        tiddler.fields['sort_field'] = self.format_date(post['modified'], Loader.WORDPRESS_FORMAT)
         tiddler.fields['created_at'] = post['date']
         tiddler.fields['modified'] = post['modified']
         tiddler.fields['item_summary'] = post['excerpt']
@@ -75,7 +81,7 @@ class Loader():
         tiddler = Tiddler('GitHubRepo' + str(repo.id), 'github')
         tiddler.text = repo.name
         tiddler.tags = ['gitHubRepo']
-        tiddler.fields['sort_field'] = repo.pushed_at
+        tiddler.fields['sort_field'] = self.get_date_string(repo.pushed_at)
         tiddler.fields['created_at'] = repo.created_at
         tiddler.fields['updated_at'] = repo.updated_at
         tiddler.fields['item_summary'] = repo.description
@@ -89,7 +95,7 @@ class Loader():
         tiddler = Tiddler('GitHubGist' + str(repo.id), 'github')
         tiddler.text = repo.description
         tiddler.tags = ['gitHubGist']
-        tiddler.fields['sort_field'] = repo.updated_at
+        tiddler.fields['sort_field'] = self.get_date_string(repo.updated_at)
         tiddler.fields['created_at'] = repo.created_at
         tiddler.fields['updated_at'] = repo.updated_at
         tiddler.fields['item_summary'] = repo.description
@@ -98,6 +104,24 @@ class Loader():
         update = self.do_update(tiddler)
         if update:
             self.store.put(tiddler)
+
+    def format_date(self, date_str, format_str):
+        date = datetime.strptime(date_str, format_str)
+        return self.get_date_string(date)
+
+    def get_date_string(self, date):
+        month = self.fix_length(str(date.month))
+        day = self.fix_length(str(date.day))
+        hour = self.fix_length(str(date.hour))
+        minute = self.fix_length(str(date.minute))
+        second = self.fix_length(str(date.second))
+        return '%s%s%s%s%s%s' % (date.year, month, day, hour, minute, second)
+
+    def fix_length(self, item):
+        if len(item) == 1:
+            return '0' + item
+        else:
+            return item
 
     def do_update(self, tiddler):
         existing = self.get_tiddler(tiddler)
