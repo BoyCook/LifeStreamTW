@@ -53,7 +53,7 @@ class Loader():
         tiddler.text = tweet['text']
         tiddler.tags = ['tweet']
         tiddler.fields['sort_field'] = self.format_date(tweet['created_at'], Loader.TWITTER_FORMAT)
-        tiddler.fields['sort_date'] = post['created_at']
+        tiddler.fields['sort_date'] = tweet['created_at']
         tiddler.fields['created_at'] = tweet['created_at']
         tiddler.fields['user_name'] = tweet['user']['screen_name']
         tiddler.fields['item_summary'] = tweet['text']
