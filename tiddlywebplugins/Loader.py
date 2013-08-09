@@ -15,8 +15,8 @@ class Loader():
 
     def __init__(self, store):
         self.store = store
-        self.twitter = Twython(config['app_key'], config['app_secret'], config['oauth_token'],
-                               config['oauth_token_secret'])
+        self.twitter = Twython(config['app_key'], config['app_secret'], 
+                               config['oauth_token'], config['oauth_token_secret'])
         self.wp = WordPress('boycook.wordpress.com')
         self.gitHub = Github()
 
@@ -53,6 +53,7 @@ class Loader():
         tiddler.text = tweet['text']
         tiddler.tags = ['tweet']
         tiddler.fields['sort_field'] = self.format_date(tweet['created_at'], Loader.TWITTER_FORMAT)
+        tiddler.fields['sort_date'] = post['created_at']
         tiddler.fields['created_at'] = tweet['created_at']
         tiddler.fields['user_name'] = tweet['user']['screen_name']
         tiddler.fields['item_summary'] = tweet['text']
@@ -67,8 +68,9 @@ class Loader():
         tiddler.text = post['content']
         tiddler.tags = ['blogPost']
         tiddler.fields['sort_field'] = self.format_date(post['modified'], Loader.WORDPRESS_FORMAT)
+        tiddler.fields['sort_date'] = post['modified']
         tiddler.fields['created_at'] = post['date']
-        tiddler.fields['modified'] = post['modified']
+        tiddler.fields['post_modified_at'] = post['modified']
         tiddler.fields['item_summary'] = post['excerpt']
         tiddler.fields['post_title'] = post['title']
         tiddler.fields['item_url'] = post['URL']
@@ -82,6 +84,7 @@ class Loader():
         tiddler.text = repo.name
         tiddler.tags = ['gitHubRepo']
         tiddler.fields['sort_field'] = self.get_date_string(repo.pushed_at)
+        tiddler.fields['sort_date'] = repo.pushed_at
         tiddler.fields['created_at'] = repo.created_at
         tiddler.fields['updated_at'] = repo.updated_at
         tiddler.fields['item_summary'] = repo.description
@@ -96,6 +99,7 @@ class Loader():
         tiddler.text = repo.description
         tiddler.tags = ['gitHubGist']
         tiddler.fields['sort_field'] = self.get_date_string(repo.updated_at)
+        tiddler.fields['sort_date'] = repo.updated_at
         tiddler.fields['created_at'] = repo.created_at
         tiddler.fields['updated_at'] = repo.updated_at
         tiddler.fields['item_summary'] = repo.description

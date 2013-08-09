@@ -74,7 +74,7 @@
                 <section class="event-item-head">
                     <i class="{{ get_css_class(item.tags[0]) }}"></i>
                     <a href="{{ item.fields.item_url }}" target="_blank" title="View tweet" class="simple-a">{{ get_anchor_text(item.tags[0]) }}</a>
-                    <p class="time-ago">{{ item.fields.created_at }}</p>
+                    <p class="time-ago">{{ item.fields.sort_date }}</p>
                 </section>
                 <article class="event-item-content">
                     {{ item.fields.item_summary }}
