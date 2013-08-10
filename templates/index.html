@@ -53,15 +53,25 @@
         {% endif %}
     {%- endmacro %}
 
-    {% macro get_anchor_text(tag) -%}
+    {% macro get_text_prefix(item) -%}
+        {% if item.revision==1 %}
+            new {{ item.revision }}
+        {% else %}
+            updated {{ item.revision }}
+        {% endif %}
+    {%- endmacro %}
+
+    {% macro get_anchor_text(item) -%}
+        {% set tag = item.tags[0] %}        
+        {% set prefix = get_text_prefix(item) %}
         {% if tag=='tweet' %}
             @BoyCook
         {% elif tag=='blogPost' %}
-            new blog post
+            {{ prefix }} blog post
         {% elif tag=='gitHubRepo' %}
-            new repository
+            {{ prefix }} repository
         {% elif tag=='gitHubGist' %}
-            new gist
+            {{ prefix }} gist
         {% endif %}
     {%- endmacro %}
     <section class="content" >
@@ -73,7 +83,7 @@
             <section class="event-item">
                 <section class="event-item-head">
                     <i class="{{ get_css_class(item.tags[0]) }}"></i>
-                    <a href="{{ item.fields.item_url }}" target="_blank" title="View tweet" class="simple-a">{{ get_anchor_text(item.tags[0]) }}</a>
+                    <a href="{{ item.fields.item_url }}" target="_blank" title="View tweet" class="simple-a">{{ get_anchor_text(item) }}</a>
                     <p class="time-ago">{{ item.fields.sort_date }}</p>
                 </section>
                 <article class="event-item-content">
