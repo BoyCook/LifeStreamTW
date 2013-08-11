@@ -12,7 +12,10 @@ from jinja2 import Environment, FileSystemLoader
 
 template_env = Environment(loader=FileSystemLoader('templates'))
 SUCCESS_RESPONSE = ['<html><body><h1>Done</h1></body></html>']
-
+MODULES_TO_BAG = {}
+MODULES_TO_BAG['titter'] = 'tweets'
+MODULES_TO_BAG['wordpress'] = 'blogs'
+MODULES_TO_BAG['github'] = 'github'
 
 def init(init_config):
     print 'Life Stream init...'
@@ -29,14 +32,11 @@ def init(init_config):
 
 @do_html()
 def home_page(environ, start_response):
+    load_modules = config['lifestream_modules'] 
     store = environ['tiddlyweb.store']
     feed = get_recipe_contents('feed', store, environ)
     tweets = get_bag_contents('tweets', store)
     blogs = get_bag_contents('blogs', store)
-
-     # filters = parse_for_filters('select=title:Blog100')
-     # _filter_tiddlers(filters, store, tiddlers)
-
     githubs = get_bag_contents('github', store)
     template = template_env.get_template('index.html')
     google_site_verification = config['google_site_verification']
