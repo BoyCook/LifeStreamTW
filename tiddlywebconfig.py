@@ -8,6 +8,7 @@ config = {
     'twanager_plugins': ['tiddlywebwiki'],
     'google_site_verification': 'cgE8_AF7n-I1t-6pn4fEJzLW01HVdGzfsGVCfi7hyDs',
     'lifestream_modules': ['twitter', 'wordpress', 'github'],
+    'twitter_user': 'BoyCook',
     'lifestream_welcome_file': 'welcome.html',
 	'lifestream_title': 'Craig Cook on the web [beta]',
 	'lifestream_header': 'Craig Cook',

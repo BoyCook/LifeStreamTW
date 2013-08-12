@@ -7,14 +7,18 @@ from tiddlyweb import control
 from jinja2 import Environment, FileSystemLoader
 
 class MyLifestream():
-	MODULES_TO_BAG = {}
-	MODULES_TO_BAG['titter'] = 'tweets'
-	MODULES_TO_BAG['wordpress'] = 'blogs'
-	MODULES_TO_BAG['github'] = 'github'
+	MODULE_CONFIG = {
+		'twitter': ['tweets', 'Tweets', 'icon-twitter'],
+		'wordpress': ['blog', 'Blog', 'icon-wordpress'],
+		'github': ['github', 'GitHub', 'icon-github'],
+		'linkedin': ['linkedin', 'LinkedIn', 'icon-linkedin'],
+		'jenkins': 	['jenkins', 'Jenkins', 'icon-cog'],
+		'flickr': ['flickr', 'Flickr', 'icon-flickr']
+	}
 	template_env = Environment(loader=FileSystemLoader('templates'))
 
 	def __init__(self, modules, store, environ):
-		self.modules = modules;
+		self.set_modules(modules)
 		self.store = store
 		self.environ = environ
 		self.google_site_verification = config['google_site_verification']
@@ -38,6 +42,7 @@ class MyLifestream():
                          description=self.description,
                          keywords=self.keywords,
                          site_image=self.site_image,
+                         modules=self.modules,
                          feed=feed,
                          tweets=tweets,
                          blogs=blogs,
@@ -64,3 +69,8 @@ class MyLifestream():
 
 	def sort_tiddlers(self, tiddlers):
 	    return filter_tiddlers(tiddlers, 'sort=-sort_field')		
+
+	def set_modules(self, modules):
+		self.modules = [];
+		for module in modules:
+			self.modules.append(self.MODULE_CONFIG.get(module))

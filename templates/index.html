@@ -28,12 +28,9 @@
         <h1>{{ header }}</h1>
         <ul class="navigation">
             <li><a onclick="doNavigate('home');" class="nav-home" title="Home"><i class="icon-home"></i><p> Home</p></a></li>
-            <li><a onclick="doNavigate('twitter');" class="nav-twitter" title="Twitter"><i class="icon-twitter"></i><p> @BoyCook</p></a></li>
-            <li><a onclick="doNavigate('blog');" class="nav-blog" title="Blog"><i class="icon-wordpress"></i><p> Blog</p></a></li>
-            <li><a onclick="doNavigate('gitHub');" class="nav-github" title="GitHub"><i class="icon-github"></i><p> GitHub</p></a></li>
-            <li><a onclick="doNavigate('linkedIn');" class="nav-linked" title="LinkedIn"><i class="icon-linkedin"></i><p> LinkedIn</p></a></li>
-            <li><a onclick="doNavigate('jenkins');" class="nav-jenkins" title="Jenkins"><i class="icon-cog"></i><p> Jenkins</p></a></li>
-            <li><a onclick="doNavigate('flickr');" class="nav-flickr" title="Flickr"><i class="icon-flickr"></i><p> Pictures</p></a></li>
+            {% for item in modules %}
+                <li><a onclick="doNavigate('{{ item[0] }}');" title="{{ item[1] }}"><i class="{{ item[2] }}"></i><p> {{ item[1] }}</p></a></li>
+            {% endfor %}
         </ul>
         <section class="welcome-image">
             <img src="{{ site_image }}"/>
@@ -82,7 +79,7 @@
             </section>
             {% endfor %}
         </section>
-        <section id="twitter" class="module">
+        <section id="tweets" class="module">
             {% for tweet in tweets %}
             <section class="event-item">
                 <section class="event-item-head">
@@ -122,7 +119,7 @@
                 </article>
             </section>                
         </section>
-        <section id="gitHub" class="module">
+        <section id="github" class="module">
             {% for item in githubs %}
             <section class="event-item">
                 <section class="event-item-head">
