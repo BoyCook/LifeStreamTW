@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST=127.0.0.1:30080
+HOST=127.0.0.1:8080
 
 # ContentType - File - Bag
 function load_bag() {	

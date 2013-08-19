@@ -16,3 +16,7 @@ TiddlyWeb version of the LifeStream app
 * https://api.github.com/users/boycook/events
 * https://api.github.com/users/boycook/repos
 * https://api.github.com/users/boycook/gists
+
+## Install on OS X
+
+/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/tiddlywebplugins.lifestream
