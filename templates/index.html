@@ -62,7 +62,7 @@
         {% set tag = item.tags[0] %}        
         {% set prefix = get_text_prefix(item) %}
         {% if tag=='tweet' %}
-            @BoyCook
+            @{{ twitter_user }}
         {% elif tag=='blogPost' %}
             {{ prefix }} blog post
         {% elif tag=='gitHubRepo' %}
@@ -94,7 +94,7 @@
             <section class="event-item">
                 <section class="event-item-head">
                     <i class="icon-twitter"></i> 
-                    <a href="http://twitter.com/BoyCook" target="_blank" title="View tweet" class="simple-a">@BoyCook</a>
+                    <a href="http://twitter.com/{{twitter_user}}" target="_blank" title="View tweet" class="simple-a">@{{twitter_user}}</a>
                     <p class="time-ago">{{ tweet.fields.created_at }}</p>
                 </section>                        
                 <article class="event-item-content">

@@ -21,6 +21,8 @@ class MyLifestream():
 		self.set_modules(modules)
 		self.store = store
 		self.environ = environ
+		# TODO make some of these optional
+		self.twitter_user = config['twitter_user']
 		self.google_site_verification = config['google_site_verification']
 		self.welcome_file = config['lifestream_welcome_file']
 		self.title = config['lifestream_title']
@@ -37,6 +39,7 @@ class MyLifestream():
 		template = self.template_env.get_template('index.html')
 		return template.generate(welcome=self.welcome_file,
                          google_site_verification=self.google_site_verification,
+                         twitter_user=self.twitter_user,
                          title=self.title,
                          header=self.header,
                          description=self.description,
