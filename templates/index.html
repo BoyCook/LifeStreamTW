@@ -52,9 +52,9 @@
 
     {% macro get_text_prefix(item) -%}
         {% if item.revision==1 %}
-            new {{ item.revision }}
+            new
         {% else %}
-            updated {{ item.revision }}
+            updated
         {% endif %}
     {%- endmacro %}
 
