@@ -8,6 +8,8 @@ clean:
 	rm -r *.egg-info || true
 	rm tiddlyweb.log || true
 	rm lifestream.log || true
+	rm -r htmlcov || true
+	rm .coverage || true		
 
 clean-bags:
 	rm -r store/bags/blogs/tiddlers/* || true
@@ -16,6 +18,12 @@ clean-bags:
 
 test:
 	py.test -x test
+
+test-cov:
+	py.test --cov-report term-missing --cov wordpress test
+
+test-cov-html:
+	py.test --cov-report html --cov wordpress test
 
 install:
 	python setup.py install

@@ -1,0 +1,11 @@
+language: python
+python:
+- 2.7
+
+install:
+- pip install --use-mirrors \
+    `python -c 'from setup import REQUIREMENTS; print " ".join(REQUIREMENTS["install"] + REQUIREMENTS["testing"])'`
+
+script: make test-cov
+
+after_success: coveralls
