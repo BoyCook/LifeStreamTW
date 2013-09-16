@@ -20,10 +20,10 @@ test:
 	py.test -x test
 
 test-cov:
-	py.test --cov-report term-missing --cov wordpress test
+	py.test --cov-report term-missing --cov tiddlywebplugins test
 
 test-cov-html:
-	py.test --cov-report html --cov wordpress test
+	py.test --cov-report html --cov tiddlywebplugins test
 
 install:
 	python setup.py install
