@@ -9,19 +9,20 @@ REQUIREMENTS = {
     'testing': ['pytest', 'coverage', 'pytest-cov', 'python-coveralls'],
 }
 
-setup(
-    namespace_packages=['tiddlywebplugins'],
-    name='tiddlywebplugins.lifestream',
-    version=VERSION,
-    description='LifeStream plugin for social services integration',
-    long_description=readme,
-    author='Craig Cook',
-    author_email='boycook@osmosoft.com',
-    url='https://github.com/BoyCook/LifeStreamTW',
-    packages=find_packages(exclude=['test']),
-    # packages=['tiddlywebplugins', 'static', 'templates', 'load'],    
-    install_requires=REQUIREMENTS["install"],
-    extras_require= { "testing":  REQUIREMENTS["testing"] },
-    platforms='Posix; MacOS X; Windows',
-    zip_safe=False
-)
+if __name__ == '__main__':
+    setup(
+        namespace_packages=['tiddlywebplugins'],
+        name='tiddlywebplugins.lifestream',
+        version=VERSION,
+        description='LifeStream plugin for social services integration',
+        long_description=readme,
+        author='Craig Cook',
+        author_email='boycook@osmosoft.com',
+        url='https://github.com/BoyCook/LifeStreamTW',
+        packages=find_packages(exclude=['test']),
+        # packages=['tiddlywebplugins', 'static', 'templates', 'load'],
+        install_requires=REQUIREMENTS["install"],
+        extras_require= { "testing":  REQUIREMENTS["testing"] },
+        platforms='Posix; MacOS X; Windows',
+        zip_safe=False
+    )
