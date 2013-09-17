@@ -21,7 +21,7 @@ setup(
     packages=find_packages(exclude=['test']),
     # packages=['tiddlywebplugins', 'static', 'templates', 'load'],    
     install_requires=REQUIREMENTS["install"],
-    extras_require= { "testing":  REQUIREMENTS["testing"] }    
+    extras_require= { "testing":  REQUIREMENTS["testing"] },
     platforms='Posix; MacOS X; Windows',
-    zip_safe=False,
+    zip_safe=False
 )
