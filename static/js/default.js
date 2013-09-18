@@ -25,3 +25,37 @@ function setDateAgo() {
 		element.innerHTML = updated;
 	}
 }
+
+var Router = Backbone.Router.extend({
+    initialized: true,
+    routes: {
+        "blog/:title": "blog",
+        "tweet/:title": "tweet"
+    },
+    blog: function(title) {
+        console.log('Blog [%s]', title);
+    },
+    tweet: function(title) {
+        console.log('Tweet [%s]', title);
+    }    
+});
+
+
+// $(document).ready(function () {
+//     var loaded = function() {
+//         new Router();
+//         Backbone.history.start();
+//     };
+//     app = new SPA(window.location.hostname, window.location.port);
+//     app.setup(loaded);
+//     $('#filterBox').keyup(function (e) {
+//         if (!(e.keyCode >= 37 && e.keyCode <= 40)) {
+//             app.filter($('#filterBox').val());
+//         }
+//     });    
+//     $('input:radio[name=searchType]').change(function() {
+//         var list = $('input:radio[name=searchType]:checked').val();
+//         $('#filterBox').val(app.filteredLists[list].text);
+//         app.switchList(list);            
+//     });   
+// });
