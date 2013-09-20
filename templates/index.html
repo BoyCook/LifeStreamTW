@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>{{ title }}</title>
@@ -13,12 +12,18 @@
     <link rel="stylesheet" href="static/css/layout.css" type="text/css" media="screen">
     <link rel="stylesheet" href="static/css/default.css" type="text/css">
     <link rel="stylesheet" href="static/css/elusive-webfont.css">
+    <script type="text/javascript" src="static/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="static/js/underscore-min.js"></script>
+    <script type="text/javascript" src="static/js/backbone-min.js"></script>
     <script type="text/javascript" src="static/js/default.js"></script>
     <script type="text/javascript" src="static/js/DateAgo.js"></script>
     <script type="text/javascript">
         window.onload = function() {
             doNavigate('home');
             setDateAgo();
+            new Router();
+            Backbone.history.start();
+            var app = new SPA();
       };
     </script>    
 </head>
