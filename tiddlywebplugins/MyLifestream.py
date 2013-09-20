@@ -8,7 +8,7 @@ from jinja2 import Environment, FileSystemLoader
 
 class MyLifestream():
 	MODULE_CONFIG = {
-		'twitter': ['tweets', 'Tweets', 'icon-twitter'],
+		'twitter': ['tweet', 'Tweets', 'icon-twitter'],
 		'wordpress': ['blog', 'Blog', 'icon-wordpress'],
 		'github': ['github', 'GitHub', 'icon-github'],
 		'linkedin': ['linkedin', 'LinkedIn', 'icon-linkedin'],

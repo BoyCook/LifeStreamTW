@@ -5,7 +5,7 @@ readme = open('README.md').read()
 VERSION = '0.0.1'
 
 REQUIREMENTS = {
-    'install': ['httplib2', 'simplejson', 'tiddlyweb', 'tiddlywebplugins.static', 'tiddlywebplugins.utils'],
+    'install': ['httplib2', 'simplejson', 'wordpress-py-client', 'tiddlyweb', 'tiddlywebplugins.static', 'tiddlywebplugins.utils'],
     'testing': ['pytest', 'coverage', 'pytest-cov', 'python-coveralls'],
 }
 
