@@ -1,6 +1,7 @@
 twython==3.0.0
 PyGithub==1.17.0
 simplejson==3.6.3
+html5lib==0.95
 httplib2==0.8
 tiddlyweb==2.3.0
 tiddlywebwiki==0.69.0
