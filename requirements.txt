@@ -1,10 +1,11 @@
 twython==3.0.0
 PyGithub==1.17.0
-simplejson==3.3.0
+simplejson==3.6.3
 httplib2==0.8
-tiddlyweb==1.4.15
+tiddlyweb==2.3.0
 tiddlywebwiki==0.69.0
-tiddlywebplugins.static==1.1.0
+tiddlywebplugins.static==1.2.0
 tiddlywebplugins.utils==1.9
 APScheduler==2.1.1
 Jinja2==2.7.1
+git+git://github.com/BoyCook/WordPressPYClient.git
