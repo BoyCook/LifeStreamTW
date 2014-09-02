@@ -1,0 +1,6 @@
+desc: Sorted feed of all data
+policy: {"read": [], "create": [], "manage": [], "accept": [], "write": [], "owner": "GUEST", "delete": []}
+
+/bags/blogs/tiddlers?sort:-sort_field
+/bags/github/tiddlers?sort:-sort_field
+/bags/tweets/tiddlers?sort:-sort_field
