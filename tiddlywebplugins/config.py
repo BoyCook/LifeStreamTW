@@ -1,6 +1,8 @@
+import os
+
 config = {
-    'app_key': '',    
-    'app_secret': '',
-    'oauth_token': '',
-    'oauth_token_secret': ''
+    'app_key': os.environ['APP_KEY'],    
+    'app_secret': os.environ['APP_SECRET'],
+    'oauth_token': os.environ['OAUTH_TOKEN'],
+    'oauth_token_secret': os.environ['APP_KEY']
 }
