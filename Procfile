@@ -1,1 +1,1 @@
-web: twanager server 127.0.0.1 $PORT
+web: twanager server 0.0.0.0 $PORT
