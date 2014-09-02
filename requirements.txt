@@ -1,0 +1,7 @@
+twython==3.0.0
+PyGithub==1.17.0
+simplejson==3.3.0
+httplib2==0.8
+tiddlyweb==1.4.15
+tiddlywebplugins.static==1.1.0
+tiddlywebplugins.utils==1.9
