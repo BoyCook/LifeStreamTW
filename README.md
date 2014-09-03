@@ -2,6 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/BoyCook/LifeStreamTW/badge.png)](https://coveralls.io/r/BoyCook/LifeStreamTW)
 [![Version](https://pypip.in/v/tiddlywebplugins.lifestream/badge.png)](https://crate.io/packages/tiddlywebplugins.lifestream)
 [![Downloads](https://pypip.in/d/tiddlywebplugins.lifestream/badge.png)](https://crate.io/packages/tiddlywebplugins.lifestream)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## About
 TiddlyWeb version of the LifeStream app
